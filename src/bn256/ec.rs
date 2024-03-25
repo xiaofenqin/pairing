@@ -1405,7 +1405,7 @@ pub mod g2 {
     }
 
     impl G2Affine {
-        fn scale_by_cofactor(&self) -> G2 {
+        pub fn scale_by_cofactor(&self) -> G2 {
             // G2 cofactor = 2p - n = 2q - r
             // 0x30644e72e131a029b85045b68181585e06ceecda572a2489345f2299c0f9fa8d
             let cofactor = BitIterator::new([
