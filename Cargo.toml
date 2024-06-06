@@ -16,10 +16,11 @@ repository = "https://github.com/matter-labs/pairing"
 edition = "2018"
 
 [dependencies]
-rand = "0.4"
+# rand = "0.4"
 byteorder = "1"
 cfg-if = "1.0"
-ff = {package = "ff_ce", version = "0.14.*", features = ["derive"]}
+# ff = {package = "ff_ce", version = "0.14.*", features = ["derive"]}
+ff = {package = "ff_ce", git = "https://github.com/xiaofenqin/ff", features = ["derive"]}
 # ff = { path = '../ff', package = "ff_ce", features = ["derive"]}
 serde = {version = "1", features = ["derive"]}
 

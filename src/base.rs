@@ -14,7 +14,7 @@ pub trait GenericCurveProjective:
     + Sync
     + fmt::Debug
     + fmt::Display
-    + rand::Rand
+    //+ rand::Rand
     + 'static
 {
     type Scalar: PrimeField;

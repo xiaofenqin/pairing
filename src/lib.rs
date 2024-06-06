@@ -14,7 +14,7 @@
 #![cfg_attr(feature = "asm", feature(asm_const))]
 
 extern crate byteorder;
-extern crate rand;
+//extern crate rand;
 
 #[cfg(test)]
 pub mod tests;
@@ -127,7 +127,7 @@ pub trait CurveProjective:
     + Sync
     + fmt::Debug
     + fmt::Display
-    + rand::Rand
+    //+ rand::Rand
     + 'static
 {
     type Engine: Engine<Fr = Self::Scalar>;

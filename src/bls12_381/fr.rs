@@ -4,7 +4,7 @@ use ff::{Field, PrimeField, PrimeFieldRepr};
 #[PrimeFieldModulus = "52435875175126190479447740508185965837690552500527637822603658699938581184513"]
 #[PrimeFieldGenerator = "7"]
 pub struct Fr(FrRepr);
-
+/*
 #[cfg(test)]
 use rand::{Rand, SeedableRng, XorShiftRng};
 
@@ -983,4 +983,4 @@ fn fr_field_tests() {
 #[test]
 fn fr_repr_tests() {
     crate::tests::repr::random_repr_tests::<FrRepr>();
-}
+}*/

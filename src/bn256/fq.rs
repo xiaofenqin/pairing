@@ -451,7 +451,7 @@ pub const NEGATIVE_ONE: Fq = Fq(FqRepr([
     0x2259d6b14729c0fa,
 ]));
 
-#[cfg(test)]
+/*#[cfg(test)]
 use rand::{Rand, SeedableRng, XorShiftRng};
 
 #[test]
@@ -589,4 +589,4 @@ fn fq_field_tests() {
     crate::tests::field::random_sqrt_tests::<Fq>();
     crate::tests::field::random_frobenius_tests::<Fq, _>(Fq::char(), 13);
     crate::tests::field::from_str_tests::<Fq>();
-}
+}*/

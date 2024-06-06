@@ -2,7 +2,7 @@ use super::fq::FROBENIUS_COEFF_FQ12_C1;
 use super::fq2::Fq2;
 use super::fq6::Fq6;
 use ff::Field;
-use rand::{Rand, Rng};
+//use rand::{Rand, Rng};
 
 /// An element of Fq12, represented by c0 + c1 * w.
 #[derive(Copy, Clone, Debug, Eq, PartialEq, Hash, Default, ::serde::Serialize, ::serde::Deserialize)]
@@ -17,14 +17,14 @@ impl ::std::fmt::Display for Fq12 {
     }
 }
 
-impl Rand for Fq12 {
-    fn rand<R: Rng>(rng: &mut R) -> Self {
-        Fq12 {
-            c0: rng.gen(),
-            c1: rng.gen(),
-        }
-    }
-}
+// impl Rand for Fq12 {
+//     fn rand<R: Rng>(rng: &mut R) -> Self {
+//         Fq12 {
+//             c0: rng.gen(),
+//             c1: rng.gen(),
+//         }
+//     }
+// }
 
 impl Fq12 {
     pub fn conjugate(&mut self) {

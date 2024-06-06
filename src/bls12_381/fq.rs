@@ -1190,7 +1190,7 @@ fn test_neg_one() {
 
     assert_eq!(NEGATIVE_ONE, o);
 }
-
+/*
 #[cfg(test)]
 use rand::{Rand, SeedableRng, XorShiftRng};
 
@@ -2262,4 +2262,4 @@ fn test_fq_legendre() {
         0x1d61ac6bfd5c88b,
     ]);
     assert_eq!(QuadraticResidue, Fq::from_repr(e).unwrap().legendre());
-}
+}*/

@@ -1,6 +1,6 @@
 use super::fq::{FROBENIUS_COEFF_FQ2_C1, Fq, NEGATIVE_ONE};
 use ff::{Field, SqrtField};
-use rand::{Rand, Rng};
+//use rand::{Rand, Rng};
 
 use std::cmp::Ordering;
 
@@ -56,14 +56,14 @@ impl Fq2 {
     }
 }
 
-impl Rand for Fq2 {
-    fn rand<R: Rng>(rng: &mut R) -> Self {
-        Fq2 {
-            c0: rng.gen(),
-            c1: rng.gen(),
-        }
-    }
-}
+// impl Rand for Fq2 {
+//     fn rand<R: Rng>(rng: &mut R) -> Self {
+//         Fq2 {
+//             c0: rng.gen(),
+//             c1: rng.gen(),
+//         }
+//     }
+// }
 
 impl Field for Fq2 {
     fn zero() -> Self {

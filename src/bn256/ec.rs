@@ -672,7 +672,7 @@ pub mod g1 {
         CurveAffine, CurveProjective, EncodedPoint, Engine, GroupDecodingError, RawEncodable,
     };
     use ff::{BitIterator, Field, PrimeField, PrimeFieldRepr, SqrtField};
-    use rand::{Rand, Rng};
+    //use rand::{Rand, Rng};
     use std::fmt;
 
     curve_impl!(
@@ -746,39 +746,39 @@ pub mod g1 {
     #[derive(Copy, Clone)]
     pub struct G1Uncompressed([u8; 64]);
 
-    impl Rand for G1 {
-        fn rand<R: Rng>(rng: &mut R) -> Self {
-            loop {
-                let x = rng.gen();
-                let greatest = rng.gen();
+    // impl Rand for G1 {
+    //     fn rand<R: Rng>(rng: &mut R) -> Self {
+    //         loop {
+    //             let x = rng.gen();
+    //             let greatest = rng.gen();
+    //
+    //             if let Some(p) = G1Affine::get_point_from_x(x, greatest) {
+    //                 if !p.is_zero() {
+    //                     if p.is_on_curve() {
+    //                         return p.into_projective();
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
-                if let Some(p) = G1Affine::get_point_from_x(x, greatest) {
-                    if !p.is_zero() {
-                        if p.is_on_curve() {
-                            return p.into_projective();
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    impl Rand for G1Affine {
-        fn rand<R: Rng>(rng: &mut R) -> Self {
-            loop {
-                let x = rng.gen();
-                let greatest = rng.gen();
-
-                if let Some(p) = G1Affine::get_point_from_x(x, greatest) {
-                    if !p.is_zero() {
-                        if p.is_on_curve() {
-                            return p;
-                        }
-                    }
-                }
-            }
-        }
-    }
+    // impl Rand for G1Affine {
+    //     fn rand<R: Rng>(rng: &mut R) -> Self {
+    //         loop {
+    //             let x = rng.gen();
+    //             let greatest = rng.gen();
+    //
+    //             if let Some(p) = G1Affine::get_point_from_x(x, greatest) {
+    //                 if !p.is_zero() {
+    //                     if p.is_on_curve() {
+    //                         return p;
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
     impl G1Uncompressed {
         pub fn from_fixed_bytes(bytes: [u8; 64]) -> Self {
@@ -1123,7 +1123,7 @@ pub mod g2 {
     use super::g1::G1Affine;
     use crate::{CurveAffine, CurveProjective, EncodedPoint, Engine, GroupDecodingError};
     use ff::{BitIterator, Field, PrimeField, PrimeFieldRepr, SqrtField};
-    use rand::{Rand, Rng};
+    //use rand::{Rand, Rng};
     use std::fmt;
 
     curve_impl!(
@@ -1138,29 +1138,29 @@ pub mod g2 {
         G1Affine
     );
 
-    impl Rand for G2 {
-        fn rand<R: Rng>(rng: &mut R) -> Self {
-            loop {
-                let x = rng.gen();
-                let greatest = rng.gen();
+    // impl Rand for G2 {
+    //     fn rand<R: Rng>(rng: &mut R) -> Self {
+    //         loop {
+    //             let x = rng.gen();
+    //             let greatest = rng.gen();
+    //
+    //             if let Some(p) = G2Affine::get_point_from_x(x, greatest) {
+    //                 if !p.is_zero() {
+    //                     if p.is_on_curve() {
+    //                         return p.scale_by_cofactor();
+    //                     }
+    //                 }
+    //             }
+    //         }
+    //     }
+    // }
 
-                if let Some(p) = G2Affine::get_point_from_x(x, greatest) {
-                    if !p.is_zero() {
-                        if p.is_on_curve() {
-                            return p.scale_by_cofactor();
-                        }
-                    }
-                }
-            }
-        }
-    }
-
-    impl Rand for G2Affine {
-        fn rand<R: Rng>(rng: &mut R) -> Self {
-            let r = G2::rand(rng);
-            return r.into_affine();
-        }
-    }
+    // impl Rand for G2Affine {
+    //     fn rand<R: Rng>(rng: &mut R) -> Self {
+    //         let r = G2::rand(rng);
+    //         return r.into_affine();
+    //     }
+    // }
 
     #[derive(Copy, Clone)]
     pub struct G2Uncompressed([u8; 128]);

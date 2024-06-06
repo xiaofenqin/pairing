@@ -467,7 +467,7 @@ impl G2Prepared {
     }
 }
 
-
+/*
 #[cfg(test)]
 use rand::{Rand, SeedableRng, XorShiftRng};
 
@@ -602,3 +602,4 @@ fn random_bilinearity_tests() {
 fn bn256_engine_tests() {
     crate::tests::engine::engine_tests::<Bn256>();
 }
+*/

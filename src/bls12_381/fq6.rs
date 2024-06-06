@@ -1,7 +1,7 @@
 use super::fq::{FROBENIUS_COEFF_FQ6_C1, FROBENIUS_COEFF_FQ6_C2};
 use super::fq2::Fq2;
 use ff::Field;
-use rand::{Rand, Rng};
+//use rand::{Rand, Rng};
 
 /// An element of Fq6, represented by c0 + c1 * v + c2 * v^(2).
 #[derive(Copy, Clone, Debug, Eq, PartialEq, Hash, Default, ::serde::Serialize, ::serde::Deserialize)]
@@ -17,15 +17,15 @@ impl ::std::fmt::Display for Fq6 {
     }
 }
 
-impl Rand for Fq6 {
-    fn rand<R: Rng>(rng: &mut R) -> Self {
-        Fq6 {
-            c0: rng.gen(),
-            c1: rng.gen(),
-            c2: rng.gen(),
-        }
-    }
-}
+// impl Rand for Fq6 {
+//     fn rand<R: Rng>(rng: &mut R) -> Self {
+//         Fq6 {
+//             c0: rng.gen(),
+//             c1: rng.gen(),
+//             c2: rng.gen(),
+//         }
+//     }
+// }
 
 impl Fq6 {
     /// Multiply by quadratic nonresidue v.
