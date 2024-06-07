@@ -20,7 +20,7 @@ edition = "2018"
 byteorder = "1"
 cfg-if = "1.0"
 # ff = {package = "ff_ce", version = "0.14.*", features = ["derive"]}
-ff = {package = "ff_ce", git = "https://github.com/xiaofenqin/ff", features = ["derive"]}
+ff = {package = "ff_ce", git = "https://github.com/xiaofenqin/ff", features = ["derive"], rev = "09e7171eb4e7f48c88444314306df734759c71b3"}
 # ff = { path = '../ff', package = "ff_ce", features = ["derive"]}
 serde = {version = "1", features = ["derive"]}
 

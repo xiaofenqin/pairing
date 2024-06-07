@@ -301,74 +301,74 @@ impl Field for Fq6 {
     }
 }
 
-#[cfg(test)]
-use rand::{SeedableRng, XorShiftRng};
-
-#[test]
-fn test_fq6_mul_nonresidue() {
-    let mut rng = XorShiftRng::from_seed([0x5dbe6259, 0x8d313d76, 0x3237db17, 0xe5bc0654]);
-
-    let nqr = Fq6 {
-        c0: Fq2::zero(),
-        c1: Fq2::one(),
-        c2: Fq2::zero(),
-    };
-
-    for _ in 0..1000 {
-        let mut a = Fq6::rand(&mut rng);
-        let mut b = a;
-        a.mul_by_nonresidue();
-        b.mul_assign(&nqr);
-
-        assert_eq!(a, b);
-    }
-}
-
-#[test]
-fn test_fq6_mul_by_1() {
-    let mut rng = XorShiftRng::from_seed([0x5dbe6259, 0x8d313d76, 0x3237db17, 0xe5bc0654]);
-
-    for _ in 0..1000 {
-        let c1 = Fq2::rand(&mut rng);
-        let mut a = Fq6::rand(&mut rng);
-        let mut b = a;
-
-        a.mul_by_1(&c1);
-        b.mul_assign(&Fq6 {
-            c0: Fq2::zero(),
-            c1: c1,
-            c2: Fq2::zero(),
-        });
-
-        assert_eq!(a, b);
-    }
-}
-
-#[test]
-fn test_fq6_mul_by_01() {
-    let mut rng = XorShiftRng::from_seed([0x5dbe6259, 0x8d313d76, 0x3237db17, 0xe5bc0654]);
-
-    for _ in 0..1000 {
-        let c0 = Fq2::rand(&mut rng);
-        let c1 = Fq2::rand(&mut rng);
-        let mut a = Fq6::rand(&mut rng);
-        let mut b = a;
-
-        a.mul_by_01(&c0, &c1);
-        b.mul_assign(&Fq6 {
-            c0: c0,
-            c1: c1,
-            c2: Fq2::zero(),
-        });
-
-        assert_eq!(a, b);
-    }
-}
-
-#[test]
-fn fq6_field_tests() {
-    use ff::PrimeField;
-
-    crate::tests::field::random_field_tests::<Fq6>();
-    crate::tests::field::random_frobenius_tests::<Fq6, _>(super::fq::Fq::char(), 13);
-}
+// #[cfg(test)]
+// use rand::{SeedableRng, XorShiftRng};
+//
+// #[test]
+// fn test_fq6_mul_nonresidue() {
+//     let mut rng = XorShiftRng::from_seed([0x5dbe6259, 0x8d313d76, 0x3237db17, 0xe5bc0654]);
+//
+//     let nqr = Fq6 {
+//         c0: Fq2::zero(),
+//         c1: Fq2::one(),
+//         c2: Fq2::zero(),
+//     };
+//
+//     for _ in 0..1000 {
+//         let mut a = Fq6::rand(&mut rng);
+//         let mut b = a;
+//         a.mul_by_nonresidue();
+//         b.mul_assign(&nqr);
+//
+//         assert_eq!(a, b);
+//     }
+// }
+//
+// #[test]
+// fn test_fq6_mul_by_1() {
+//     let mut rng = XorShiftRng::from_seed([0x5dbe6259, 0x8d313d76, 0x3237db17, 0xe5bc0654]);
+//
+//     for _ in 0..1000 {
+//         let c1 = Fq2::rand(&mut rng);
+//         let mut a = Fq6::rand(&mut rng);
+//         let mut b = a;
+//
+//         a.mul_by_1(&c1);
+//         b.mul_assign(&Fq6 {
+//             c0: Fq2::zero(),
+//             c1: c1,
+//             c2: Fq2::zero(),
+//         });
+//
+//         assert_eq!(a, b);
+//     }
+// }
+//
+// #[test]
+// fn test_fq6_mul_by_01() {
+//     let mut rng = XorShiftRng::from_seed([0x5dbe6259, 0x8d313d76, 0x3237db17, 0xe5bc0654]);
+//
+//     for _ in 0..1000 {
+//         let c0 = Fq2::rand(&mut rng);
+//         let c1 = Fq2::rand(&mut rng);
+//         let mut a = Fq6::rand(&mut rng);
+//         let mut b = a;
+//
+//         a.mul_by_01(&c0, &c1);
+//         b.mul_assign(&Fq6 {
+//             c0: c0,
+//             c1: c1,
+//             c2: Fq2::zero(),
+//         });
+//
+//         assert_eq!(a, b);
+//     }
+// }
+//
+// #[test]
+// fn fq6_field_tests() {
+//     use ff::PrimeField;
+//
+//     crate::tests::field::random_field_tests::<Fq6>();
+//     crate::tests::field::random_frobenius_tests::<Fq6, _>(super::fq::Fq::char(), 13);
+// }

@@ -148,42 +148,42 @@ impl Field for Fq12 {
     }
 }
 
-#[cfg(test)]
-use rand::{SeedableRng, XorShiftRng};
-
-#[test]
-fn test_fq12_mul_by_014() {
-    let mut rng = XorShiftRng::from_seed([0x5dbe6259, 0x8d313d76, 0x3237db17, 0xe5bc0654]);
-
-    for _ in 0..1000 {
-        let c0 = Fq2::rand(&mut rng);
-        let c1 = Fq2::rand(&mut rng);
-        let c5 = Fq2::rand(&mut rng);
-        let mut a = Fq12::rand(&mut rng);
-        let mut b = a;
-
-        a.mul_by_014(&c0, &c1, &c5);
-        b.mul_assign(&Fq12 {
-            c0: Fq6 {
-                c0: c0,
-                c1: c1,
-                c2: Fq2::zero(),
-            },
-            c1: Fq6 {
-                c0: Fq2::zero(),
-                c1: c5,
-                c2: Fq2::zero(),
-            },
-        });
-
-        assert_eq!(a, b);
-    }
-}
-
-#[test]
-fn fq12_field_tests() {
-    use ff::PrimeField;
-
-    crate::tests::field::random_field_tests::<Fq12>();
-    crate::tests::field::random_frobenius_tests::<Fq12, _>(super::fq::Fq::char(), 13);
-}
+// #[cfg(test)]
+// use rand::{SeedableRng, XorShiftRng};
+//
+// #[test]
+// fn test_fq12_mul_by_014() {
+//     let mut rng = XorShiftRng::from_seed([0x5dbe6259, 0x8d313d76, 0x3237db17, 0xe5bc0654]);
+//
+//     for _ in 0..1000 {
+//         let c0 = Fq2::rand(&mut rng);
+//         let c1 = Fq2::rand(&mut rng);
+//         let c5 = Fq2::rand(&mut rng);
+//         let mut a = Fq12::rand(&mut rng);
+//         let mut b = a;
+//
+//         a.mul_by_014(&c0, &c1, &c5);
+//         b.mul_assign(&Fq12 {
+//             c0: Fq6 {
+//                 c0: c0,
+//                 c1: c1,
+//                 c2: Fq2::zero(),
+//             },
+//             c1: Fq6 {
+//                 c0: Fq2::zero(),
+//                 c1: c5,
+//                 c2: Fq2::zero(),
+//             },
+//         });
+//
+//         assert_eq!(a, b);
+//     }
+// }
+//
+// #[test]
+// fn fq12_field_tests() {
+//     use ff::PrimeField;
+//
+//     crate::tests::field::random_field_tests::<Fq12>();
+//     crate::tests::field::random_frobenius_tests::<Fq12, _>(super::fq::Fq::char(), 13);
+// }

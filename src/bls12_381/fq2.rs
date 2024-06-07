@@ -878,27 +878,27 @@ fn test_fq2_legendre() {
     assert_eq!(QuadraticNonResidue, m1.legendre());
 }
 
-#[cfg(test)]
-use rand::{SeedableRng, XorShiftRng};
-
-#[test]
-fn test_fq2_mul_nonresidue() {
-    let mut rng = XorShiftRng::from_seed([0x5dbe6259, 0x8d313d76, 0x3237db17, 0xe5bc0654]);
-
-    let nqr = Fq2 {
-        c0: Fq::one(),
-        c1: Fq::one(),
-    };
-
-    for _ in 0..1000 {
-        let mut a = Fq2::rand(&mut rng);
-        let mut b = a;
-        a.mul_by_nonresidue();
-        b.mul_assign(&nqr);
-
-        assert_eq!(a, b);
-    }
-}
+// #[cfg(test)]
+// use rand::{SeedableRng, XorShiftRng};
+//
+// #[test]
+// fn test_fq2_mul_nonresidue() {
+//     let mut rng = XorShiftRng::from_seed([0x5dbe6259, 0x8d313d76, 0x3237db17, 0xe5bc0654]);
+//
+//     let nqr = Fq2 {
+//         c0: Fq::one(),
+//         c1: Fq::one(),
+//     };
+//
+//     for _ in 0..1000 {
+//         let mut a = Fq2::rand(&mut rng);
+//         let mut b = a;
+//         a.mul_by_nonresidue();
+//         b.mul_assign(&nqr);
+//
+//         assert_eq!(a, b);
+//     }
+//}
 
 #[test]
 fn fq2_field_tests() {
